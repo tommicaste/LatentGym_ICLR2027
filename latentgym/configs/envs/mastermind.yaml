@@ -1,0 +1,24 @@
+# Mastermind environment settings
+
+env_name: mastermind
+default_num_episodes: 10
+
+env_params:
+  code_length: 4
+  num_numbers: 6
+  duplicates_allowed: false
+  max_turns: 10
+
+prompts: ["no_info", "some_info", "full_info"]
+feedbacks: ["standard"]
+
+latent_summary:
+  easy: 19       # ordering, contains_*, parity, sum_even/odd, no_repeats
+  medium: 32     # strict ordering, positional, all_odd/even, duplicates patterns
+  hard: 3        # all_prime, no_prime, has_triple
+  very_hard: 0
+  total: 54
+
+notes:
+  - "Some latents require duplicates_allowed=True (all_same, palindrome, etc.)"
+  - "With duplicates=False: 360 possible codes. With duplicates=True: 1296."

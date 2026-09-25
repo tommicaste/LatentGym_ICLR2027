@@ -1,0 +1,30 @@
+# Anthropic model configurations
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --models anthropic:claude-sonnet-4-6 anthropic:claude-haiku-4-5-20251001 \
+#       --env bandits --output results/
+
+models:
+  claude-opus:
+    spec: "anthropic:claude-opus-4-6"
+    description: "Claude Opus 4.6 — strongest Anthropic model"
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+  claude-sonnet:
+    spec: "anthropic:claude-sonnet-4-6"
+    description: "Claude Sonnet 4.6 — balanced"
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+  claude-haiku:
+    spec: "anthropic:claude-haiku-4-5-20251001"
+    description: "Claude Haiku 4.5 — fastest"
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+# Environment variable required: ANTHROPIC_API_KEY

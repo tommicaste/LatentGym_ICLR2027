@@ -1,0 +1,39 @@
+# Wordle deep dive — representative latents across all complexity tiers × all prompts
+# Tests structural vs semantic latent discovery
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --config latentgym/configs/eval_suites/wordle_only.yaml \
+#       --models openai:gpt-4o \
+#       --output results/wordle/
+
+configs:
+  # Easy — vowel/letter patterns (3 prompts for ablation)
+  - { env: wordle, latent: vowel_count_2, prompt: no_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: vowel_count_2, prompt: some_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: vowel_count_2, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: no_repeated_letters, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: common_letters_only, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: has_rare_letter, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: double_L, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: unique_letters_5, prompt: full_info, feedback: standard, num_episodes: 5 }
+
+  # Medium — positional and structural
+  - { env: wordle, latent: position_E_at_1, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: position_S_at_0, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: vowel_start, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: consonant_cluster_start, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: pattern_CVCVC, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: starts_with_S, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: contains_EA, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: first_half_alphabet, prompt: full_info, feedback: standard, num_episodes: 5 }
+
+  # Hard — endings, multi-position, edit distance, semantic
+  - { env: wordle, latent: ending_ER, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: ending_LY, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: near_CRANE, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: multi_position_S_start_E_end, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: category_animals, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: category_fruits, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: letter_freq_high, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: attribute_actions, prompt: full_info, feedback: standard, num_episodes: 5 }

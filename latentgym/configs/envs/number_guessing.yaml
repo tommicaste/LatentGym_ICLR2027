@@ -1,0 +1,28 @@
+# Number Guessing environment settings
+#
+# Self-contained environment — no TextArena dependency.
+# Good for testing the benchmark pipeline end-to-end.
+
+env_name: number_guessing
+default_num_episodes: 7
+
+env_params:
+  min_range: 1
+  max_range: 1000
+  max_turns_per_episode: 30
+
+prompts: ["no_info", "some_info", "full_info"]
+feedbacks: ["standard"]
+
+latent_summary:
+  easy: 2        # set_of_2, set_of_3
+  medium: 2      # range_100, range_1000
+  hard: 3        # dynamic_range, dynamic_full_range, two_ranges
+  very_hard: 0
+  total: 7
+
+notes:
+  - "Generator-based latents (not filter-based)"
+  - "Small env — all 7 latents can be evaluated quickly"
+  - "Good first env to test with: no word pool needed, no TextArena needed"
+  - "Reward decays with turns: reward = max(0, 1.0 - turns × 0.02)"

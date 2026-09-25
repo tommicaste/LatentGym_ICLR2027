@@ -1,0 +1,41 @@
+# Prompt ablation — same latents across all 3 prompt types
+# Tests: does telling the agent about hidden patterns help?
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --config latentgym/configs/eval_suites/prompt_ablation.yaml \
+#       --models openai:gpt-4o anthropic:claude-sonnet-4-6 \
+#       --output results/prompt_ablation/
+
+configs:
+  # Bandits — 2 latents × 3 prompts
+  - { env: bandits, latent: clockwise_rotation, prompt: no_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: clockwise_rotation, prompt: some_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: clockwise_rotation, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: fibonacci, prompt: no_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: fibonacci, prompt: some_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: fibonacci, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Wordle — 2 latents × 3 prompts
+  - { env: wordle, latent: vowel_count_2, prompt: no_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: vowel_count_2, prompt: some_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: vowel_count_2, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: ending_ER, prompt: no_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: ending_ER, prompt: some_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: ending_ER, prompt: full_info, feedback: standard, num_episodes: 5 }
+
+  # Secretary — 2 latents × 3 prompts
+  - { env: secretary, latent: best_is_last, prompt: no_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: best_is_last, prompt: some_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: best_is_last, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: mountain_pattern, prompt: no_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: mountain_pattern, prompt: some_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: mountain_pattern, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Number Guessing — 2 latents × 3 prompts
+  - { env: number_guessing, latent: set_of_3, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: set_of_3, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: set_of_3, prompt: full_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: two_ranges, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: two_ranges, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: two_ranges, prompt: full_info, feedback: standard, num_episodes: 7 }

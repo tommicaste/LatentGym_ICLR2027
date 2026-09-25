@@ -1,0 +1,33 @@
+# OpenAI model configurations
+#
+# Model specs are passed via --models flag, not loaded from this file.
+# This file serves as a reference for available models and recommended settings.
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --models openai:gpt-4o openai:gpt-4o-mini openai:gpt-3.5-turbo \
+#       --env bandits --output results/
+
+models:
+  gpt-4o:
+    spec: "openai:gpt-4o"
+    description: "GPT-4o — strongest general model"
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+  gpt-4o-mini:
+    spec: "openai:gpt-4o-mini"
+    description: "GPT-4o-mini — faster, cheaper"
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+  gpt-3.5-turbo:
+    spec: "openai:gpt-3.5-turbo"
+    description: "GPT-3.5 Turbo — baseline"
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+# Environment variable required: OPENAI_API_KEY

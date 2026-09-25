@@ -1,0 +1,44 @@
+# Number Guessing deep dive — all 7 latents × all 3 prompts
+# Small env, good for debugging and quick iteration
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --config latentgym/configs/eval_suites/number_guessing_only.yaml \
+#       --models openai:gpt-4o \
+#       --output results/numguess/
+#
+# Equivalent CLI:
+#   python -m latentgym.cli.run_eval single \
+#       --models openai:gpt-4o --env number_guessing --output results/numguess/
+
+configs:
+  # Easy latents × all prompts
+  - { env: number_guessing, latent: set_of_2, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: set_of_2, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: set_of_2, prompt: full_info, feedback: standard, num_episodes: 7 }
+
+  - { env: number_guessing, latent: set_of_3, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: set_of_3, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: set_of_3, prompt: full_info, feedback: standard, num_episodes: 7 }
+
+  # Medium latents × all prompts
+  - { env: number_guessing, latent: range_100, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: range_100, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: range_100, prompt: full_info, feedback: standard, num_episodes: 7 }
+
+  - { env: number_guessing, latent: range_1000, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: range_1000, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: range_1000, prompt: full_info, feedback: standard, num_episodes: 7 }
+
+  # Hard latents × all prompts
+  - { env: number_guessing, latent: dynamic_range, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: dynamic_range, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: dynamic_range, prompt: full_info, feedback: standard, num_episodes: 7 }
+
+  - { env: number_guessing, latent: dynamic_full_range, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: dynamic_full_range, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: dynamic_full_range, prompt: full_info, feedback: standard, num_episodes: 7 }
+
+  - { env: number_guessing, latent: two_ranges, prompt: no_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: two_ranges, prompt: some_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: two_ranges, prompt: full_info, feedback: standard, num_episodes: 7 }

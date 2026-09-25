@@ -1,0 +1,21 @@
+# Hangman environment settings
+
+env_name: hangman
+default_num_episodes: 10
+
+env_params:
+  max_attempts: 6
+
+prompts: ["no_info", "some_info", "full_info"]
+feedbacks: ["standard"]
+
+latent_summary:
+  easy: 23       # word length, vowel counts/ratios, all_words, easy_word
+  medium: 51     # starting letters, endings, suffixes, letter frequency, structural
+  hard: 31       # specific doubles, specific clusters, semantic categories, hard_word
+  very_hard: 0
+  total: 105
+
+notes:
+  - "Needs a word pool file for trajectory generation"
+  - "Semantic category latents (animals, colors, etc.) have small pools"

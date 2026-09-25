@@ -1,0 +1,39 @@
+# Local vLLM model configurations
+#
+# Start vLLM servers first:
+#   # Single model
+#   vllm serve /path/to/model --port 8000
+#
+#   # Two models for double-agent eval
+#   CUDA_VISIBLE_DEVICES=0 vllm serve /path/to/finetuned --port 8000 &
+#   CUDA_VISIBLE_DEVICES=1 vllm serve /path/to/base --port 8001 &
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --models vllm:http://localhost:8000 \
+#       --env bandits --output results/
+#
+#   python -m latentgym.cli.run_eval double \
+#       --model-a vllm:http://localhost:8000 \
+#       --model-b vllm:http://localhost:8001 \
+#       --switch-episode 5 \
+#       --env bandits --output results/
+
+models:
+  finetuned:
+    spec: "vllm:http://localhost:8000"
+    description: "Finetuned model on GPU 0"
+    gpu: 0
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+  base:
+    spec: "vllm:http://localhost:8001"
+    description: "Base model on GPU 1"
+    gpu: 1
+    sampling:
+      temperature: 0.7
+      max_tokens: 512
+
+# No API key needed — local server

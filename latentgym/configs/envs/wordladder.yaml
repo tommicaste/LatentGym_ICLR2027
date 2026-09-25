@@ -1,0 +1,22 @@
+# Word Ladder environment settings
+
+env_name: wordladder
+default_num_episodes: 5
+
+env_params:
+  max_turns: 20
+
+prompts: ["no_info", "some_info", "full_info"]
+feedbacks: ["standard"]
+
+latent_summary:
+  easy: 23       # length_3/4/5, path_short/exact_3/4, start/target patterns
+  medium: 21     # length_6/7, path_medium, same/different first/last, starts_with_*
+  hard: 9        # both_begin/end_vowel, both_have_double, high/low_overlap, path_long
+  very_hard: 0
+  total: 53
+
+notes:
+  - "Latents filter on word PAIRS (start, target), not single words"
+  - "length_6+ may have zero valid pairs with default word list"
+  - "Default auto-generation uses word_lengths=[3, 4, 5]"

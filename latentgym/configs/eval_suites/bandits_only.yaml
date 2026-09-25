@@ -1,0 +1,45 @@
+# Bandits deep dive — all 28 latents × all 3 prompts
+# Tests how prompt information level affects pattern discovery
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --config latentgym/configs/eval_suites/bandits_only.yaml \
+#       --models openai:gpt-4o \
+#       --output results/bandits/
+#
+# Equivalent CLI:
+#   python -m latentgym.cli.run_eval single \
+#       --models openai:gpt-4o --env bandits --output results/bandits/
+
+configs:
+  # Easy latents × 3 prompts
+  - { env: bandits, latent: loyal_favorite_0, prompt: no_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: loyal_favorite_0, prompt: some_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: loyal_favorite_0, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  - { env: bandits, latent: clockwise_rotation, prompt: no_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: clockwise_rotation, prompt: some_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: clockwise_rotation, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  - { env: bandits, latent: p_gap_large, prompt: no_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: p_gap_large, prompt: some_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: p_gap_large, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  - { env: bandits, latent: even_indices_only, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: binary_switch_0_1, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Medium latents
+  - { env: bandits, latent: ping_pong, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: shadow, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: value_decay, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: p_gap_medium, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Hard latents
+  - { env: bandits, latent: skip_2, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: random_walk, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: p_gap_small, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Very hard latents
+  - { env: bandits, latent: fibonacci, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: mirror_mode, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: p_gap_tiny, prompt: full_info, feedback: standard, num_episodes: 10 }

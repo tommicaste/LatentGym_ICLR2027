@@ -1,0 +1,66 @@
+# Easy latents across all environments — good starting benchmark
+# Uses full_info prompt so the agent knows there's a hidden pattern
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --config latentgym/configs/eval_suites/easy.yaml \
+#       --models openai:gpt-4o anthropic:claude-sonnet-4-6 \
+#       --output results/easy/
+#
+# Equivalent CLI (without config file):
+#   python -m latentgym.cli.run_eval single \
+#       --models openai:gpt-4o --complexity easy --prompt full_info \
+#       --output results/easy/
+
+configs:
+  # Bandits — 12 easy latents
+  - { env: bandits, latent: loyal_favorite_0, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: loyal_favorite_1, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: loyal_favorite_2, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: clockwise_rotation, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: counterclockwise_rotation, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: even_indices_only, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: odd_indices_only, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: p_gap_large, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: binary_switch_0_1, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: bandits, latent: binary_switch_0_last, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Wordle — 5 representative easy latents
+  - { env: wordle, latent: vowel_count_2, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: no_repeated_letters, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: common_letters_only, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: has_double_letter, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordle, latent: unique_letters_5, prompt: full_info, feedback: standard, num_episodes: 5 }
+
+  # Hangman — 5 representative easy latents
+  - { env: hangman, latent: length_5, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: hangman, latent: length_7, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: hangman, latent: all_words, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: hangman, latent: easy_word, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: hangman, latent: vowel_count_2, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Mastermind — 5 easy latents
+  - { env: mastermind, latent: ascending, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: mastermind, latent: consecutive, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: mastermind, latent: contains_1, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: mastermind, latent: no_repeats, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: mastermind, latent: sum_even, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Secretary — 5 easy latents
+  - { env: secretary, latent: best_is_last, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: best_is_first, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: fixed_position_0, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: first_half_bias, prompt: full_info, feedback: standard, num_episodes: 10 }
+  - { env: secretary, latent: fixed_high, prompt: full_info, feedback: standard, num_episodes: 10 }
+
+  # Word Ladder — 5 easy latents
+  - { env: wordladder, latent: length_3, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordladder, latent: length_4, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordladder, latent: path_short, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordladder, latent: different_first_letter, prompt: full_info, feedback: standard, num_episodes: 5 }
+  - { env: wordladder, latent: start_begins_vowel, prompt: full_info, feedback: standard, num_episodes: 5 }
+
+  # Number Guessing — all 7 latents (small env)
+  - { env: number_guessing, latent: set_of_2, prompt: full_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: set_of_3, prompt: full_info, feedback: standard, num_episodes: 7 }
+  - { env: number_guessing, latent: range_100, prompt: full_info, feedback: standard, num_episodes: 7 }

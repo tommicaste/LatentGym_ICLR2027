@@ -1,0 +1,22 @@
+# Bandits environment settings
+#
+# These are the default parameters used when creating BanditSingleEpisodeEnv.
+# Override in eval suite configs or via CLI --num-episodes flag.
+
+env_name: bandits
+default_num_episodes: 10
+
+env_params:
+  buttons: ["red", "blue", "green", "yellow", "purple"]
+  num_turns: 20    # 19 exploration + 1 final selection
+
+prompts: ["no_info", "some_info", "full_info"]
+feedbacks: ["standard", "with_stats"]
+
+# Latent counts by complexity
+latent_summary:
+  easy: 12       # loyal_favorite_*, binary_switch_*, rotations, indices, p_gap_large
+  medium: 6      # p_gap_medium, ping_pong, value_decay, shadow, ascending/descending_best
+  hard: 5        # p_gap_small, value_decay_fast, skip_2, skip_3, random_walk
+  very_hard: 5   # p_gap_tiny, mirror_mode, fibonacci, prime_indices, triangular
+  total: 28

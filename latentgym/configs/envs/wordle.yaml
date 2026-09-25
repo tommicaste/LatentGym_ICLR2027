@@ -1,0 +1,23 @@
+# Wordle environment settings
+
+env_name: wordle
+default_num_episodes: 5
+
+env_params:
+  word_length: 5
+  max_attempts: 6
+
+prompts: ["no_info", "some_info", "full_info"]
+feedbacks: ["standard"]
+
+latent_summary:
+  easy: 24       # vowel_count, repetition, doubles, unique_letters, common/rare
+  medium: 84     # positional, clusters, letter pairs, V/C patterns, starts_with
+  hard: 57       # endings, edit distance, multi-position, semantic, attributes
+  very_hard: 0
+  total: 165
+
+notes:
+  - "Needs a word pool file for trajectory generation (--candidate-pool)"
+  - "Hardcore mode word list (9000+ words) recommended over basic (156 words)"
+  - "Some semantic latents have very small pools (5-10 words)"

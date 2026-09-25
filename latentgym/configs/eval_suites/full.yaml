@@ -1,0 +1,26 @@
+# Full benchmark — all envs, all latents, all prompts
+# WARNING: This is very large. Use the CLI hierarchy instead:
+#   python -m latentgym.cli.run_eval single --models openai:gpt-4o --output results/full/
+#
+# This file is provided as a reference for what "full" means.
+# For practical use, prefer CLI flags: --env, --complexity, --prompt, etc.
+#
+# Total configs: 7 envs × all latents × 3 prompts = ~1300+ configs per model
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --config latentgym/configs/eval_suites/full.yaml \
+#       --models openai:gpt-4o \
+#       --output results/full/
+
+# NOTE: Rather than listing all 1300+ entries here, use the CLI directly:
+#   python -m latentgym.cli.run_eval single --models openai:gpt-4o --output results/full/
+#
+# The CLI with no --env/--latent/--prompt flags automatically expands to all registered
+# envs × latents × prompts × feedbacks. This YAML would be identical to that expansion.
+#
+# If you need a YAML for reproducibility, generate one:
+#   python -m latentgym.cli.run_eval single --models mock:random --dry-run --output /dev/null 2>&1
+#   (prints the full eval plan)
+
+configs: []  # Use CLI expansion instead — see comments above

@@ -1,0 +1,47 @@
+# Quick sanity check — 2 envs × 3 easy latents, single prompt
+# ~6 configs, fast to run
+#
+# Usage:
+#   python -m latentgym.cli.run_eval single \
+#       --config latentgym/configs/eval_suites/quick.yaml \
+#       --models openai:gpt-4o \
+#       --output results/quick/
+
+configs:
+  # Bandits — 3 easy latents
+  - env: bandits
+    latent: loyal_favorite_0
+    prompt: full_info
+    feedback: standard
+    num_episodes: 5
+
+  - env: bandits
+    latent: clockwise_rotation
+    prompt: full_info
+    feedback: standard
+    num_episodes: 5
+
+  - env: bandits
+    latent: p_gap_large
+    prompt: full_info
+    feedback: standard
+    num_episodes: 5
+
+  # Number guessing — 3 latents
+  - env: number_guessing
+    latent: set_of_2
+    prompt: full_info
+    feedback: standard
+    num_episodes: 5
+
+  - env: number_guessing
+    latent: set_of_3
+    prompt: full_info
+    feedback: standard
+    num_episodes: 5
+
+  - env: number_guessing
+    latent: range_100
+    prompt: full_info
+    feedback: standard
+    num_episodes: 5
